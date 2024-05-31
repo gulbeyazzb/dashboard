@@ -10,11 +10,11 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-primary h-screen ">
+    <div className="bg-primary min-h-screen ">
       {isClient ? (
         <div className="flex">
           <SideBar />
-          <hr className="border border-1 h-screen border-[#E6E8EB] mr-4" />
+          <div className="border border-1 border-[#E6E8EB] mr-4"></div>
           <Content />
         </div>
       ) : (
