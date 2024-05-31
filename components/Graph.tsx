@@ -66,8 +66,8 @@ const Graph = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="w-[835px] h-[443px] mb-5">
+    <div className="max-w-4xl mx-auto pb-16 ">
+      <div className="w-[825px] h-[443px] bg-white rounded-2xl p-6 flex items-center">
         {" "}
         <Line data={data} options={options} />
       </div>
