@@ -2,6 +2,7 @@ import React from "react";
 import SnackBar from "./SnackBar";
 import Status from "./Status";
 import Graph from "./Graph";
+import TransactionTable from "./TransactionTable";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <hr className="border border-1 w-full border-[#E6E8EB] mt-4" />
       <Status />
       <Graph />
+      <TransactionTable />
     </>
   );
 };
