@@ -9,9 +9,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#F7FAFC",
-      },
-      fontFamily: {
-        sans: ["Open-Sans", "sans-serif"],
+        statusText: "#1C1C1C",
+        status_bg_blue: "#E3F5FF",
+        status_bg_gray: "#E5ECF6",
       },
     },
   },
