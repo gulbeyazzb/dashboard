@@ -1,5 +1,3 @@
-"use client";
-import { API } from "@/api/api";
 import Content from "@/components/Content";
 import SideBar from "@/components/SideBar";
 import React, { useEffect, useState } from "react";
@@ -9,14 +7,10 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     setIsClient(true);
-
-    if (localStorage.getItem("token")) {
-      API.get("get-info").then((res) => console.log(res.data));
-    }
   }, []);
 
   return (
-    <div className="bg-primary h-screen">
+    <div className="bg-primary h-screen ">
       {isClient ? (
         <div className="flex">
           <SideBar />
