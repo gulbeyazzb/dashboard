@@ -12,6 +12,7 @@ module.exports = {
         statusText: "#1C1C1C",
         status_bg_blue: "#E3F5FF",
         status_bg_gray: "#E5ECF6",
+        transaction_text: "#404040",
       },
     },
   },
