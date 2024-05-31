@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: "HK Grotesk";
   src: url("../assets/fonts/hk-grotesk.regular.ttf") format("ttf");
