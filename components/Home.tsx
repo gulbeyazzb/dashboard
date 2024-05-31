@@ -1,11 +1,13 @@
 import React from "react";
 import SnackBar from "./SnackBar";
+import Status from "./Status";
+import Graph from "./Graph";
 
 const Home = () => {
   return (
     <>
       <SnackBar />
-      <div className="w-[892px] mx-auto pt-28">
+      <div className="max-w-4xl mx-auto pt-28">
         <div className="flex flex-col gap-10">
           <h1 className="font-bold text-3xl pl-[70px]">
             Proxies & Scraping Infrastructure
@@ -17,6 +19,8 @@ const Home = () => {
         </div>
       </div>
       <hr className="border border-1 w-full border-[#E6E8EB] mt-4" />
+      <Status />
+      <Graph />
     </>
   );
 };
