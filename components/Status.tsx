@@ -41,7 +41,7 @@ const Status = () => {
     }
   }, []);
   return (
-    <div>
+    <>
       {err && (
         <div>
           <Alert severity="error">{err}</Alert>
@@ -92,7 +92,7 @@ const Status = () => {
       ) : (
         <div>Veri yükleniyor...</div>
       )}
-    </div>
+    </>
   );
 };
 
