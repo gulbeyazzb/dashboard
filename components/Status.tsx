@@ -11,7 +11,7 @@ type initials = {
   totalDataUsage: string;
 };
 
-const Status = () => {
+const Status: React.FC = () => {
   const [isClient, setIsClient] = useState<boolean>(false);
   const [data, setData] = useState<initials | undefined>(undefined);
   const [err, setErr] = useState<string>("");
@@ -30,7 +30,6 @@ const Status = () => {
     if (localStorage.getItem("token")) {
       API.get("get-info")
         .then((res) => {
-          console.log(res.data);
           setData(res.data);
         })
         .catch((e) =>
