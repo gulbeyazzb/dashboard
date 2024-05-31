@@ -1,15 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "HK Grotesk";
+  src: url("../assets/fonts/hk-grotesk.regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 
-html,
+@font-face {
+  font-family: "HK Grotesk";
+  src: url("../assets/fonts/hk-grotesk.regular.ttf") format("ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
-  padding: 0;
-  margin: 0;
-
-  font-family: "Open-Sans", sans-serif;
+  font-family: "HK Grotesk", sans-serif;
 }
 
 .input-style {
   @apply border-2 border-gray-500 rounded-md p-1;
+}
+
+.sideBar-btn {
+  @apply flex justify-center items-center w-[60px] h-[60px] hover:bg-[#78B6FF33] rounded-xl;
+}
+
+.sideBar-icons {
+  @apply w-[30px] h-[30px] active:text-[#0C6DFC];
 }
