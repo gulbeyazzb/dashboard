@@ -30,3 +30,11 @@ body {
 .sideBar-icons {
   @apply w-[30px] h-[30px] active:text-[#0C6DFC];
 }
+
+.status-headers {
+  @apply text-sm text-statusText;
+}
+
+.status-spans {
+  @apply text-2xl text-statusText;
+}
