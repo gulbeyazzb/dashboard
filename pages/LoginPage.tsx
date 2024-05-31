@@ -1,7 +1,7 @@
 "use client";
-import { API, renewAPI } from "../api/api";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { API, renewAPI } from "@/api/api";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -18,7 +18,7 @@ const LoginPage: React.FC = () => {
     API.post("login", payload)
       .then((res) => {
         renewAPI(res.data.jwt);
-        router.push("/DashboardPage");
+        router.push("/Dashboard");
       })
 
       .catch(() => {
