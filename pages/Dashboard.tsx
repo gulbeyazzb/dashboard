@@ -5,22 +5,23 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { toast, Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SpinnerCircular } from "spinners-react";
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState<boolean>(true);
   const [menu, setMenu] = useState<string>("home");
-  const [isClient, setIsClient] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setIsClient(true);
+      setLoading(false);
     } else {
       toast.error("Login Sayfasına Yönlendiriliyorsunuz...");
       setTimeout(() => {
         router.push("/");
       }, 3000);
     }
-  }, []);
+  }, [router]);
 
   return (
     <div className="bg-primary min-h-screen ">
@@ -36,11 +37,15 @@ const Dashboard = () => {
         theme="light"
         transition={Bounce}
       />
-      {isClient && (
+      {!loading ? (
         <div className="flex">
-          <SideBar setMenu={setMenu} />
+          <SideBar setMenu={setMenu} menu={menu} />
           <div className="border border-1 border-white_secondary mr-4"></div>
           <Content menu={menu} />
+        </div>
+      ) : (
+        <div className="flex justify-center py-10">
+          <SpinnerCircular color="#d75e23" secondaryColor="gray" />;
         </div>
       )}
     </div>

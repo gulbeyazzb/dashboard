@@ -1,7 +1,12 @@
 import { API } from "@/api/api";
 import React, { useEffect, useState } from "react";
 import DropdownMenu from "./compounds/DropdownMenu";
+import { SpinnerCircular } from "spinners-react";
 
+interface TransactionTableProps {
+  className?: string;
+  children?: React.ReactNode;
+}
 interface DataItem {
   type: string;
   location: string;
@@ -20,7 +25,7 @@ interface ProcessedDataItem {
   date: Date;
 }
 
-const TransactionTable: React.FC = () => {
+const TransactionTable: React.FC<TransactionTableProps> = () => {
   const [processedData, setProcessedData] = useState<ProcessedDataItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -48,7 +53,11 @@ const TransactionTable: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <div>Yükleniyor...</div>;
+    return (
+      <div className="flex justify-center py-10">
+        <SpinnerCircular color="#d75e23" secondaryColor="gray" />;
+      </div>
+    );
   }
 
   if (error) {
@@ -80,10 +89,10 @@ const TransactionTable: React.FC = () => {
             <div>Actions</div>
           </div>
           {processedData.length > 0 ? (
-            processedData?.map((d, index) => (
+            processedData?.map((d) => (
               <>
                 <div
-                  key={index}
+                  key={Math.random() * 9999}
                   className="grid grid-cols-7 gap-4 py-4 text-sm text-transaction_text text-center"
                 >
                   <div>{d?.type}</div>
@@ -93,7 +102,7 @@ const TransactionTable: React.FC = () => {
                   <div>{d?.purpose}</div>
                   <div>{formatDate(d?.date)}</div>
                   <div className="flex justify-center ">
-                    <DropdownMenu />
+                    <DropdownMenu ipcount={d.ipcount} />
                   </div>
                 </div>
                 <hr className="border-[0.5px] w-full border-gray_primary " />

@@ -2,6 +2,7 @@
 import { API } from "@/api/api";
 import { Alert } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { SpinnerCircular } from "spinners-react";
 
 type initials = {
   dailyUsage: string;
@@ -12,7 +13,6 @@ type initials = {
 };
 
 const Status: React.FC = () => {
-  const [isClient, setIsClient] = useState<boolean>(false);
   const [data, setData] = useState<initials | undefined>(undefined);
   const [err, setErr] = useState<string>("");
 
@@ -26,7 +26,6 @@ const Status: React.FC = () => {
   };
 
   useEffect(() => {
-    setIsClient(true);
     if (localStorage.getItem("token")) {
       API.get("get-info")
         .then((res) => {
@@ -89,7 +88,9 @@ const Status: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div>Veri yükleniyor...</div>
+        <div className="flex justify-center py-10">
+          <SpinnerCircular color="#d75e23" secondaryColor="gray" />;
+        </div>
       )}
     </>
   );
