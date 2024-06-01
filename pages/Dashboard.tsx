@@ -6,7 +6,8 @@ import React, { useEffect, useState } from "react";
 import { toast, Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
+  const [menu, setMenu] = useState<string>("home");
   const [isClient, setIsClient] = useState<boolean>(false);
   const router = useRouter();
 
@@ -37,9 +38,9 @@ const Dashboard: React.FC = () => {
       />
       {isClient && (
         <div className="flex">
-          <SideBar />
-          <div className="border border-1 border-[#E6E8EB] mr-4"></div>
-          <Content />
+          <SideBar setMenu={setMenu} />
+          <div className="border border-1 border-white_secondary mr-4"></div>
+          <Content menu={menu} />
         </div>
       )}
     </div>
