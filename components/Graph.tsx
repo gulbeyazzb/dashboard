@@ -24,11 +24,11 @@ ChartJS.register(
 
 const Graph = () => {
   const data = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    labels: ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
       {
         label: "Data usage per network",
-        data: [0.8, 3.4, 5.4, 3, 7, 4, 5, 8],
+        data: ["", 1.5, 0.8, 3.4, 5.4, 3, 2.5, 4, 8],
         borderColor: "black",
         fill: true,
         tension: 0.6,
@@ -57,7 +57,7 @@ const Graph = () => {
     },
     scales: {
       y: {
-        beginAtZero: true,
+        beginAtZero: false,
         ticks: {
           callback: (value: string | number | null) => `${value}GB`,
         },
@@ -67,9 +67,13 @@ const Graph = () => {
 
   return (
     <div className="max-w-4xl mx-auto pb-16 ">
-      <div className="w-[825px] h-[443px] bg-white rounded-2xl p-6 flex items-center">
-        {" "}
-        <Line data={data} options={options} />
+      <div className="w-[825px] bg-white rounded-2xl flex flex-col gap-4 justify-center">
+        <h4 className="text-status_text text-sm font-semibold p-4 pb-0">
+          Data usage per network
+        </h4>
+        <div className="pt-4 p-4">
+          <Line data={data} options={options} />
+        </div>
       </div>
     </div>
   );
