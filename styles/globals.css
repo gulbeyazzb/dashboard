@@ -25,11 +25,11 @@ body {
 }
 
 .sideBar-btn {
-  @apply flex justify-center items-center w-[60px] h-[60px] hover:bg-[#78B6FF33] rounded-xl;
+  @apply flex justify-center items-center w-[60px] h-[60px]  rounded-xl;
 }
 
 .sideBar-icons {
-  @apply w-[30px] h-[30px] active:text-[#0C6DFC];
+  @apply w-[30px] h-[30px];
 }
 
 .status-headers {
