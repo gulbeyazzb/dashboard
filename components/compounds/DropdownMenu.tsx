@@ -13,7 +13,7 @@ export default function DropdownMenu() {
       <button
         onClick={openActionsHandle}
         className={`${
-          open ? "text-actions_blue" : "text-black"
+          open ? "text-primary_blue" : "text-black"
         } w-20 flex gap-2 justify-center items-center border shadow-md p-1 rounded-md relative`}
       >
         <div className=" font-medium text-[10px]">Actions</div>
