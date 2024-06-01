@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import SnackBar from "./SnackBar";
 import Status from "./Status";
 import Graph from "./Graph";
 import TransactionTable from "./TransactionTable";
+import SnackBar from "@/components/compounds/SnackBar";
 
 const Home = () => {
   const [selected, setSelected] = useState<string>("dashboard");
@@ -17,20 +17,26 @@ const Home = () => {
           <div className="flex gap-10 pl-[70px]">
             <button
               onClick={() => setSelected("proxies")}
-              className="text-xl font-medium"
+              className={`${
+                selected === "proxies" &&
+                "text-secondary_blue border-b-2 border-secondary_blue"
+              } "text-xl font-medium pb-4`}
             >
               My Proxies
             </button>
             <button
               onClick={() => setSelected("dashboard")}
-              className="text-xl font-medium "
+              className={`${
+                selected === "dashboard" &&
+                "text-secondary_blue border-b-2 border-secondary_blue"
+              } "text-xl font-medium pb-4`}
             >
               Dashboard
             </button>
           </div>
         </div>
       </div>
-      <hr className="border border-1 w-full border-[#E6E8EB] mt-4" />
+      <hr className="border border-1 w-full border-[#E6E8EB] " />
       {selected === "dashboard" ? (
         <>
           <Status />
