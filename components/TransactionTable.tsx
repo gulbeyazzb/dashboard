@@ -69,8 +69,8 @@ const TransactionTable: React.FC = () => {
         <h4 className="text-transaction_text text-xl font-semibold">
           Transactions History
         </h4>
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="grid grid-cols-7 gap-4 font-semibold text-sm text-center">
+        <div className="flex flex-col justify-center mt-6">
+          <div className="grid grid-cols-7 gap-4 font-semibold text-sm text-center mb-4">
             <div>Type</div>
             <div>Location</div>
             <div>Rental</div>
@@ -81,20 +81,23 @@ const TransactionTable: React.FC = () => {
           </div>
           {processedData.length > 0 ? (
             processedData?.map((d, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-7 gap-4 text-sm text-transaction_text text-center"
-              >
-                <div>{d?.type}</div>
-                <div>{d?.location}</div>
-                <div>{d?.rental}</div>
-                <div>{d?.ipcount}</div>
-                <div>{d?.purpose}</div>
-                <div>{formatDate(d?.date)}</div>
-                <div className="flex justify-center ">
-                  <DropdownMenu />
+              <>
+                <div
+                  key={index}
+                  className="grid grid-cols-7 gap-4 py-4 text-sm text-transaction_text text-center"
+                >
+                  <div>{d?.type}</div>
+                  <div>{d?.location}</div>
+                  <div>{d?.rental}</div>
+                  <div>{d?.ipcount}</div>
+                  <div>{d?.purpose}</div>
+                  <div>{formatDate(d?.date)}</div>
+                  <div className="flex justify-center ">
+                    <DropdownMenu />
+                  </div>
                 </div>
-              </div>
+                <hr className="border-[0.5px] w-full border-gray_primary " />
+              </>
             ))
           ) : (
             <div>Veri Bulunamadı.</div>
