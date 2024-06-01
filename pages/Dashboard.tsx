@@ -24,7 +24,7 @@ const Dashboard = () => {
   }, [router]);
 
   return (
-    <div className="bg-primary min-h-screen ">
+    <div className="bg-primary  min-h-screen flex flex-col">
       <ToastContainer
         position="top-center"
         hideProgressBar={false}
@@ -38,14 +38,14 @@ const Dashboard = () => {
         transition={Bounce}
       />
       {!loading ? (
-        <div className="flex">
+        <div className="flex flex-1">
           <SideBar setMenu={setMenu} menu={menu} />
-          <div className="border border-1 border-white_secondary mr-4"></div>
+          <div className="border border-1 border-white_secondary mx-4"></div>
           <Content menu={menu} />
         </div>
       ) : (
         <div className="flex justify-center py-10">
-          <SpinnerCircular color="#d75e23" secondaryColor="gray" />;
+          <SpinnerCircular color="logo_orange_color" secondaryColor="gray" />
         </div>
       )}
     </div>

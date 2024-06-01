@@ -1,79 +1,112 @@
-import React, { useEffect } from "react";
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartOptions,
-} from "chart.js";
+import dynamic from "next/dynamic";
+import React, { useEffect, useState } from "react";
+import { ApexOptions } from "apexcharts";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
-const Graph = () => {
-  const data = {
-    labels: ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [
+interface ChartState {
+  series: {
+    name: string;
+    data: number[];
+  }[];
+  options: ApexOptions;
+}
+
+const Graph: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const state: ChartState = {
+    series: [
       {
-        label: "Data usage per network",
-        data: ["", 1.5, 0.8, 3.4, 5.4, 3, 2.5, 4, 8],
-        borderColor: "black",
-        fill: true,
-        tension: 0.6,
+        name: "Data usage",
+        data: [1.5, 0.8, 3.0, 5.4, 3, 2, 4, 8],
       },
     ],
-  };
-
-  const options: ChartOptions<"line"> = {
-    responsive: true,
-    plugins: {
+    options: {
       legend: {
-        display: false,
+        show: false,
+      },
+
+      chart: {
+        toolbar: {
+          show: false,
+        },
+      },
+      colors: ["#000000"],
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        curve: "smooth",
+      },
+      xaxis: {
+        categories: ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        labels: {
+          style: {
+            colors: "#00000066",
+            fontSize: "12px",
+          },
+        },
+      },
+      yaxis: {
+        max: 10,
+        min: 0,
+        tickAmount: 4,
+        axisBorder: {
+          color: "#0000000D",
+        },
+        labels: {
+          align: "right",
+          formatter: (value: number) => `${value} GB`,
+
+          style: {
+            colors: "#00000066",
+            fontSize: "12px",
+          },
+        },
       },
       tooltip: {
-        callbacks: {
-          label: (context: any) => {
-            let label = context.dataset.label || "";
-            if (label) {
-              label += ": ";
-            }
-            label += `${context.raw} GB`;
-            return label;
+        enabled: true,
+        marker: {
+          show: false,
+        },
+      },
+
+      plotOptions: {
+        radialBar: {
+          track: {
+            background: "black",
           },
         },
       },
     },
-    scales: {
-      y: {
-        beginAtZero: false,
-        ticks: {
-          callback: (value: string | number | null) => `${value}GB`,
-        },
-      },
-    },
   };
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <div className="max-w-4xl mx-auto pb-16 ">
-      <div className="w-[825px] bg-white rounded-2xl flex flex-col gap-4 justify-center">
-        <h4 className="text-status_text text-sm font-semibold p-4 pb-0">
+    <div className="max-w-4xl mx-auto pb-16">
+      <div className="w-full lg:w-[825px] bg-white rounded-2xl flex flex-col gap-4 justify-center shadow-lg p-2">
+        <h4 className="text-gray-700 text-sm font-semibold p-4 pb-0">
           Data usage per network
         </h4>
-        <div className="pt-4 p-4">
-          <Line data={data} options={options} />
+        <div id="chart">
+          <ReactApexChart
+            type="line"
+            options={state.options}
+            series={state.series}
+            height={400}
+          />
         </div>
+        <div id="html-dist"></div>
       </div>
     </div>
   );

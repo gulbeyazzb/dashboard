@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Status from "./Status";
-import Graph from "./Graph";
 import TransactionTable from "./TransactionTable";
 import SnackBar from "@/components/compounds/SnackBar";
+import Graph from "./Graph";
 
 const Home = () => {
   const [selected, setSelected] = useState<string>("dashboard");
