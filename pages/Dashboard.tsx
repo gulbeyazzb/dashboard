@@ -24,7 +24,7 @@ const Dashboard = () => {
   }, [router]);
 
   return (
-    <div className="bg-primary  min-h-screen ">
+    <div className="bg-primary  min-h-screen flex flex-col">
       <ToastContainer
         position="top-center"
         hideProgressBar={false}
