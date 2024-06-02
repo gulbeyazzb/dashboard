@@ -37,7 +37,7 @@ const Status: React.FC = () => {
           )
         );
     }
-  }, []);
+  });
   return (
     <>
       {err && (
