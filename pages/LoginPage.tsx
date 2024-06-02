@@ -12,15 +12,16 @@ const LoginPage: React.FC = () => {
   const router = useRouter();
 
   const submitHandle = () => {
+    setLoading(true);
+
     const payload = {
       username: username,
       password: password,
     };
 
-    setLoading(true);
     API.post("login", payload)
       .then((res) => {
-        setLoading(false);
+        setLoading(true);
         renewAPI(res.data.jwt);
         router.push("/Dashboard");
       })
@@ -33,13 +34,9 @@ const LoginPage: React.FC = () => {
     if (event.code === "Enter") submitHandle();
   };
 
-  useEffect(() => {
-    setLoading(true);
-  }, []);
-
   return (
     <div className="flex flex-col items-center p-20" onKeyDown={keyDownHandle}>
-      {!loading ? (
+      {loading ? (
         <div className="flex justify-center py-10">
           <SpinnerCircular color="logo_orange_color" secondaryColor="gray" />;
         </div>
