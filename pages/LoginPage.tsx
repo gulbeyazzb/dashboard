@@ -29,16 +29,16 @@ const LoginPage: React.FC = () => {
       });
   };
 
-  document.addEventListener("keydown", (e: KeyboardEvent) => {
-    e.code === "Enter" && submitHandle();
-  });
+  const keyDownHandle = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === "Enter") submitHandle();
+  };
 
   useEffect(() => {
     setLoading(true);
   }, []);
 
   return (
-    <div className="flex flex-col items-center p-20">
+    <div className="flex flex-col items-center p-20" onKeyDown={keyDownHandle}>
       {!loading ? (
         <div className="flex justify-center py-10">
           <SpinnerCircular color="logo_orange_color" secondaryColor="gray" />;
