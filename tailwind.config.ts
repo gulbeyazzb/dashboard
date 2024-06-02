@@ -18,7 +18,7 @@ module.exports = {
         white_secondary: "#E6E8EB",
         gray_primary: "#ECECEC",
         gray_secondary: "#7E868C",
-        logo_orange_color: "#d34e24",
+        logo_orange_color: "#f4ad25",
       },
     },
   },
