@@ -89,7 +89,7 @@ const Status: React.FC = () => {
         </div>
       ) : (
         <div className="flex justify-center py-10">
-          <SpinnerCircular color="#d75e23" secondaryColor="gray" />;
+          <SpinnerCircular color="logo_orange_color" secondaryColor="gray" />;
         </div>
       )}
     </>
