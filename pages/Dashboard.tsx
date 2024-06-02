@@ -21,7 +21,7 @@ const Dashboard = () => {
         router.push("/");
       }, 3000);
     }
-  }, [router]);
+  }, []);
 
   return (
     <div className="bg-primary  min-h-screen flex flex-col">
