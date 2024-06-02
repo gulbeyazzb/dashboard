@@ -42,3 +42,7 @@ body {
 .status-spans {
   @apply text-2xl text-statusText;
 }
+
+.login-btn {
+  @apply bg-gray-300 border-2 border-gray-500 rounded-md py-1 px-2 font-bold text-center hover:bg-opacity-70;
+}
