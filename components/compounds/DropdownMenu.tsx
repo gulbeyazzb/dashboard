@@ -8,10 +8,6 @@ interface DropdownMenuProps {
 const DropdownMenu: React.FC<DropdownMenuProps> = ({ ipcount }) => {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
-
   return (
     <div className="flex flex-col relative">
       <button
