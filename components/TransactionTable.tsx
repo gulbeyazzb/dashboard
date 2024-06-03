@@ -50,7 +50,7 @@ const TransactionTable: React.FC<TransactionTableProps> = () => {
       .finally(() => {
         setLoading(false);
       });
-  });
+  }, []);
 
   if (loading) {
     return (
