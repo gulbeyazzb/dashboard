@@ -12,8 +12,6 @@ const LoginPage: React.FC = () => {
   const router = useRouter();
 
   const submitHandle = () => {
-    setLoading(true);
-
     const payload = {
       username: username,
       password: password,
